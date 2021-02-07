@@ -1,0 +1,28 @@
+all: build
+	@./build/main
+
+build: ./build/main.o ./build/utils.o
+	@gcc -Wfatal-errors \
+	-std=c99 \
+	$^ \
+	-I "..\SDL\include" \
+	-L "..\SDL\lib" \
+	-l mingw32 \
+	-l SDL2main \
+	-l SDL2 \
+	-l SDL2_ttf \
+	-l SDL2_mixer \
+	-l SDL2_image \
+	-o ./build/main.exe
+
+build/%.o: %.o
+	@mv ./$< ./$@
+
+%.o: ./src/%.c ./src/common.h
+	@gcc -c $<
+	
+
+clean:
+	@rm -f ./build/*
+
+	
