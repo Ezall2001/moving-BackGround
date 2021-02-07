@@ -5,8 +5,8 @@ build: ./build/main.o ./build/utils.o
 	@gcc -Wfatal-errors \
 	-std=c99 \
 	$^ \
-	-I "..\SDL\include" \
-	-L "..\SDL\lib" \
+	-I ".\SDL\include" \
+	-L ".\SDL\lib" \
 	-l mingw32 \
 	-l SDL2main \
 	-l SDL2 \
